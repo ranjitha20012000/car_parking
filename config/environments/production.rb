@@ -81,7 +81,17 @@ Rails.application.configure do
   # Use a different logger for distributed setups.
   # require "syslog/logger"
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new "app-name")
+# Disable Rails's static asset server (Apache or nginx will already do this)  
+ config.serve_static_assets = false
 
+# Compress JavaScripts and CSS  
+ config.assets.compress = true
+
+# Don't fallback to assets pipeline if a precompiled asset is missed  
+ config.assets.compile = false
+
+# Generate digests for assets URLs  
+ config.assets.digest = true
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
@@ -91,3 +101,4 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 end
+# Disable Rails's static asset server (Apache or nginx will already do this)  

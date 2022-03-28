@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+
+<section class="container-fluid">
+<div class="row justify-content-center  ">
+
+    <div class="col-3 rounded border shadow p-3 mb-5 bg-white " id="col-Login" >
+                <p class="text-center"><strong>Forgot Your Password</strong></p>
+            
+                <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+                    <div class="form-group" id="errorLogin" >
+                    </div>
+                    <div class="form-group">
+                        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder:"EmailAddress", required: true%>
+                    </div>
+                    
+                    
+                    <div class="form-group">
+                      <%= f.submit "submit",class:"btn btn-primary float-right" %>
+                    </div>
+                    
+                <% end %>
+                <%= render "devise/shared/links" %>
+            </div>
+    </div>
+</section>

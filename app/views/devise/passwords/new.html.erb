@@ -6,24 +6,20 @@
 
 <section class="container-fluid">
 <div class="row justify-content-center  ">
-
+<%= render "devise/shared/error_messages", resource: resource %>
     <div class="col-3 rounded border shadow p-3 mb-5 bg-white " id="col-Login" >
-                <p class="text-center"><strong>Forgot Your Password</strong></p>
-            
-                <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-                    <div class="form-group" id="errorLogin" >
-                    </div>
-                    <div class="form-group">
-                        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder:"EmailAddress", required: true%>
-                    </div>
-                    
-                    
-                    <div class="form-group">
-                      <%= f.submit "submit",class:"btn btn-primary float-right" %>
-                    </div>
-                    
-                <% end %>
-                <%= render "devise/shared/links" %>
-            </div>
+    <p class="text-center"><strong>Forgot Your Password</strong></p>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <div class="form-group" id="errorLogin" >
     </div>
-</section>
+    <div class="form-group">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder:"EmailAddress", required: true%>
+    </div>
+    <div class="form-group">
+    <%= f.submit "submit",class:"btn btn-primary float-right" %>
+    </div>     
+    <% end %>
+    <%= render "devise/shared/links" %>
+    </div>
+    </div>
+    </section>

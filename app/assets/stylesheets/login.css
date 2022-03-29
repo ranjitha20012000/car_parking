@@ -1,7 +1,7 @@
 body{
   
   
-    background-image: url("https://images.unsplash.com/photo-1526626607369-f89fe1ed77a9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fHBhcmtpbmd8ZW58MHx8MHx8&w=1000&q=80");
+    background-image: url("https://www.versionx.in/wp-content/uploads/2020/03/smart-parking.jpg");
 
   /* background: url( */
  
@@ -38,6 +38,18 @@ button{
   align-items: center;
   flex-direction: column; 
   justify-content: center;
+  margin-top: 12%;
+  margin-right: 1%;
+  width: 100%;
+  min-height: 100%;
+  padding: 20px;
+}
+#col-Edit{
+  align-items: center;
+  flex-direction: column; 
+  justify-content: center;
+  margin-top: 12%;
+  margin-right: 90%;
   width: 100%;
   min-height: 100%;
   padding: 20px;

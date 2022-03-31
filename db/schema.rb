@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_25_104758) do
   enable_extension "plpgsql"
 
   create_table "charges", force: :cascade do |t|
-    t.string "type"
+    t.string "vehicle_type"
     t.integer "min_charge"
     t.integer "min_hours"
     t.integer "extra_hour_charges"
@@ -46,6 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_25_104758) do
 
   create_table "vehicles", force: :cascade do |t|
     t.string "number"
+    t.string "name_or_mobile"
     t.datetime "in_time", precision: nil
     t.datetime "out_time", precision: nil
     t.integer "fees"

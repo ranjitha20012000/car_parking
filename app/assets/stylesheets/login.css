@@ -1,7 +1,7 @@
 body{
   
   
-    background-image: url("https://images.unsplash.com/photo-1526626607369-f89fe1ed77a9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fHBhcmtpbmd8ZW58MHx8MHx8&w=1000&q=80");
+    /*background-image: url("https://images.unsplash.com/photo-1526626607369-f89fe1ed77a9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fHBhcmtpbmd8ZW58MHx8MHx8&w=1000&q=80");
 
   /* background: url( */
  
@@ -43,6 +43,16 @@ button{
   padding: 40px;
   margin-top: 200px;
 
+}
+#col-Edit{
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 12%;
+  margin-right: 90%;
+  width: 100%;
+  min-height: 100%;
+  padding: 20px;
 }
 /* Customize the label (the container) */
 .container {

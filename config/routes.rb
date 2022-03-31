@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   root 'dashboard#home'
   #root "home#index"
-
+  #get 'vehicles/index', to: 'vehicles#index'
+  #get 'vehicles/new'
+  resources :vehicles
 end

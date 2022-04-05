@@ -7,7 +7,12 @@ Rails.application.routes.draw do
   # root "articles#index"
   root 'dashboard#home'
   #root "home#index"
-  #get 'vehicles/index', to: 'vehicles#index'
+  #get 'vehicles/', to: 'vehicles#index'
   #get 'vehicles/new'
-  resources :vehicles
+  resources :vehicles 
+   
+  get 'release_action/:id' ,to: 'vehicles#release_action'
+      
+    
+  
 end

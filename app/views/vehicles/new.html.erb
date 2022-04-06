@@ -1,5 +1,5 @@
 
-
+<div class="container">
 <%= form_with(model: [@vehicle]) do |form|%>
     <% if @vehicle.errors.any? %>
     <div id="error_explanation">
@@ -22,21 +22,20 @@
     <%= form.label :number,"Vehicle no" %>
     <%= form.text_field :number %>
   </div>
+
   <div class="row">
-  <div class="field " >
-    <%= form.label :vehicle_type,"Bike" %>
-    <%= form.radio_button :vehicle_type, 'bike', :checked => true  %>
-  </div>
-  <div class="field " >
-    <%= form.label :vehicle_type,"Car" %>
-    <%= form.radio_button :vehicle_type, 'car', :checked => true  %>
-  </div>
-
-
+    <div class="field " >
+      <%= form.label :vehicle_type,"Bike" %>
+      <%= form.radio_button :vehicle_type, 'bike', :checked => true  %>
+    </div>
+    <div class="field " >
+      <%= form.label :vehicle_type,"Car" %>
+      <%= form.radio_button :vehicle_type, 'car', :checked => true  %>
+    </div>
   </div>
 
   <div class="actions">
     <%= form.submit "ADD" %>
   </div>
 <% end %>
-
+</div>

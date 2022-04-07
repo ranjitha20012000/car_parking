@@ -5,7 +5,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  
-  root "home#index"
 
+  root 'dashboard#home'
+  #root "home#index"
+  #get 'vehicles/', to: 'vehicles#index'
+  #get 'vehicles/new'
+  resources :vehicles 
+   
+  get 'release_action/:id' ,to: 'vehicles#release_action'
 end

@@ -2,6 +2,7 @@ class CreateVehicle < ActiveRecord::Migration[7.0]
   def change
     create_table :vehicles do |t|
       t.string :number
+      t.string :name_or_mobile
       t.timestamp :in_time
       t.timestamp :out_time
       t.integer :fees

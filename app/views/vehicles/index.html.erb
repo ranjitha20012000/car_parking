@@ -1,0 +1,48 @@
+<h1>vehicle index</h1>
+<div>
+   <strong> <%= link_to 'new', new_vehicle_path(@vehicle) %> </strong>
+    
+</div>
+<div>
+<table class="table table-primary table-striped table-bordered  border-dark table-hover >
+  <thead class="thead">
+    <tr>
+      <th>Name/Number</th>
+      <th>Vehicle NO.</th>
+      <th>Type</th>
+      <th>Time in</th>
+      <th>Time out</th>
+      <th>Total hours</th>
+      <th>Charges</th>
+      <th>Status</th>
+      <th>Actions</th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+  
+       <% @vehicles.each do |vehicle| %>>
+      <tr>
+        <td><%= vehicle.name_or_mobile %></td>
+        <td><%= vehicle.number%></td>
+        <td><%= vehicle.charge.vehicle_type %></td>
+        <td><%= vehicle.in_time %></td>
+        <td><%= vehicle.out_time %></td>
+        <% if vehicle.status == Vehicle::STATUS[:Parked] %>
+        <td> </td>
+        <% else %>
+        <td><%= vehicle.total_time%></td>
+        <%end%>
+        <td><%= vehicle.fees%></td>
+        <td><%= vehicle.status %></td>
+        <% if vehicle.status == Vehicle::STATUS[:parked] %>
+           <td><%= link_to 'Release',{controller: 'vehicles',action:'release_action',id: vehicle.id}, method: :get,class: 'btn btn-primary'%></td>
+        <% else %>
+          <td></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table></div>
+<br>

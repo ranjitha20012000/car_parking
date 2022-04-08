@@ -30,6 +30,7 @@ class VehiclesController < ApplicationController
         @vehicle.errors.add(:charge, 'charge not available')
       end
         if @vehicle.save
+          flash[:notice] = "Vehicle added successfully"
           redirect_to vehicles_path
           #format.json { render :show, status: :created, location: @vehicle }
         else
@@ -83,7 +84,6 @@ class VehiclesController < ApplicationController
     end
 
     def get_charge
-     
       @charge = Charge.find_by_vehicle_type(params[:vehicle][:vehicle_type])
     end
 end

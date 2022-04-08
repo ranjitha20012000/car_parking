@@ -1,12 +1,36 @@
 <h1>vehicle index</h1>
-<div>
-   <strong> <%= link_to 'new', new_vehicle_path(@vehicle) %> </strong>
-    
-</div>
-<div>
-<table class="table table-primary table-striped table-bordered  border-dark table-hover >
-  <thead class="thead">
+
+
+<%= form_with scope: :vehicle, url: vehicles_path(@vehicle),class: "form-inline " do |form|%>
+
+  <div>
+   
+    <%= form.text_field :name_or_mobile, placeholder: 'Name or Mobile',  class: "border border-dark form-control m-2" %>
+  </div>
+
+  <div>
+
+    <%= form.text_field :number ,placeholder: 'Number', class: "border border-dark form-control m-2"%>
+  </div>
+   
+    <div class="form-check m-2">
+      <%= form.label :vehicle_type,"Bike" ,class: "form-check-label m-3"%>
+      <%= form.radio_button :vehicle_type, 'bike', :checked => true ,class: "form-check-input radio-inline" %>
+ 
+      <%= form.label :vehicle_type,"Car",class: "form-check-label m-3" %>
+      <%= form.radio_button :vehicle_type, 'car', :checked => true,class: "form-check-input radio-inline"  %>
+    </div>
+  
+  
+  <div class="actions ">
+    <%= form.submit "ADD", class: "btn btn-primary m-4"%>
+  </div>
+<% end %>
+
+<table class="table  table-striped  ">
+  <thead class="table-dark">
     <tr>
+      <th>S.no</th>
       <th>Name/Number</th>
       <th>Vehicle NO.</th>
       <th>Type</th>
@@ -16,23 +40,23 @@
       <th>Charges</th>
       <th>Status</th>
       <th>Actions</th>
-      
     </tr>
   </thead>
 
   <tbody>
   
-       <% @vehicles.each do |vehicle| %>>
+       <% @vehicles.each.with_index(1) do |vehicle, index| %>
       <tr>
+        <td><%= index %></td>
         <td><%= vehicle.name_or_mobile %></td>
         <td><%= vehicle.number%></td>
         <td><%= vehicle.charge.vehicle_type %></td>
         <td><%= vehicle.in_time %></td>
         <td><%= vehicle.out_time %></td>
         <% if vehicle.status == Vehicle::STATUS[:Parked] %>
-        <td> </td>
+            <td></td>
         <% else %>
-        <td><%= vehicle.total_time%></td>
+            <td><%= vehicle.total_time%></td>
         <%end%>
         <td><%= vehicle.fees%></td>
         <td><%= vehicle.status %></td>
@@ -44,5 +68,5 @@
       </tr>
     <% end %>
   </tbody>
-</table></div>
-<br>
+</table>
+

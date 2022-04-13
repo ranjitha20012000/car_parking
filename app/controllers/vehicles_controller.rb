@@ -56,7 +56,7 @@ class VehiclesController < ApplicationController
       @vehicle.user_id = current_user.id
       @vehicle.out_time= Time.now
       @vehicle.status = Vehicle::STATUS[:left]
-      @vehicle.total_time = ((@vehicle.out_time - @vehicle.in_time) / 60).round
+      @vehicle.total_time = ((@vehicle.out_time - @vehicle.in_time) / 60).ceil
       @vehicle.fees = @vehicle.calculate_fees
       if @vehicle.save
         flash[:notice] = "vehicle released successfully"

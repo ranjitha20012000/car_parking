@@ -14,4 +14,7 @@ Rails.application.routes.draw do
   resources :vehicles 
    
   get 'release_action/:id' ,to: 'vehicles#release_action'
+  resources :charges
+  
+
 end

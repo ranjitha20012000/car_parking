@@ -1,0 +1,40 @@
+<h1> Charges </h1>
+<%= form_with scope: :charge, url: charges_path(@charges), local:true do |f|%>
+   
+      <div class="form-group">
+      <div class="form-group row">
+            <%= f.label :vehicle_type, class: "col-sm-2 col-form-label col-sm-2 col-form-label col-form-label-lg"%>
+         <div class="col-sm-2 col-form-label col-sm-2 col-form-label col-form-label-lg">
+          <%= f.label :vehicle_type,"Bike" %>
+          
+         </div>          
+    </div>
+      </div>
+      <div class="form-group row">
+          <%= f.label :min_hours, class: "col-sm-2 col-form-label col-sm-2 col-form-label col-form-label-lg"%>
+          <div class="col-sm-1">
+              <%= f.text_field :min_hours %>
+          </div>
+      </div>
+      <div class="form-group row">
+          <%= f.label :min_charge, class: "col-sm-2 col-form-label col-sm-2 col-form-label col-form-label-lg"%>
+          <div class="col-sm-1">
+              <%= f.text_field :min_charge %>
+          </div>
+      </div>
+      <div class="form-group row">
+          <%= f.label :extra_hour_charge, class: "col-sm-2 col-form-label col-sm-2 col-form-label col-form-label-lg"%>
+          <div class="col-sm-1">
+              <%= f.text_field :extra_hour_charges%>
+          </div>
+      </div>
+      
+        <div class="actions">
+            <%= f.submit "Edit", class: "btn btn-primary m-4"%>
+            
+        </div> 
+        
+  </div>
+  </div>
+<% end %>
+

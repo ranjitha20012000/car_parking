@@ -12,7 +12,7 @@ development:
   encoding: unicode
   min_messages: warning
   host: localhost
-  database: introhive_dev_2021
+  database: vehicle1
   username: postgres
   password:
 # Warning: The database defined as "test" will be erased and

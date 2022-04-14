@@ -2,7 +2,7 @@ class Vehicle < ApplicationRecord
     belongs_to :user
     belongs_to :charge
     validates :status, presence: true
-    STATUS = {parked: 'Parked', left: 'Left'}.freeze
+    STATUS = {parked: 'Parked', left: 'Left',issue: 'issue'}.freeze
 
     def calculate_fees
         charge_fees = self.charge

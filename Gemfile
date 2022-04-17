@@ -11,6 +11,9 @@ gem "sprockets-rails"
 gem "pg"
 gem 'pry-byebug'
 gem 'delayed_job_active_record'
+
+gem "chartkick"
+gem "groupdate"
 # Use sqlite3 as the database for Active Record
 # gem "sqlite3", "~> 1.4"
 

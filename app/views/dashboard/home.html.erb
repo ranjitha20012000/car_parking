@@ -1,0 +1,15 @@
+<div class="row">
+<div class="col">
+  <%= area_chart @vehicles.group_by_day(:created_at).count, 
+     width: "600px", 
+     height: "350px", 
+     title: "Daily Status",xtitle: "No of Days", ytitle: "No of vechicles"%>
+</div>
+<div class="col">
+  <%= pie_chart Vehicle.group(:status).count,donut: true,
+     width: "350px", 
+     height: "300px", 
+     title: "Current Status"
+     %>
+</div>
+</div>

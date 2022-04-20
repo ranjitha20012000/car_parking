@@ -7,8 +7,11 @@ class VehiclesController < ApplicationController
 
     #before_action :check_if_admin
     def index
-      @vehicles = Vehicle.all
+      #@vehicles=Vehicle.page(params[:page]).order(id: :desc)
+      #@vehicles=Vehicle.order(id: :desc).paginate(page: params[:page], per_page: 10)
       @charge=Charge.all
+      @q = Vehicle.ransack(params[:q])
+      @vehicles = @q.result(distinct: true).paginate(page: params[:page], per_page: 10).order(id: :desc)
     end
     
     def new

@@ -1,6 +1,8 @@
-<h1>vehicle index</h1>
-
-
+<h1>VEHICLE INDEX</h1>
+<%= search_form_for @q,class: "d-flex flex-row-reverse" do |f| %>
+      <%= f.search_field :number_or_status_cont, placeholder: "Search..." %>
+      
+<% end %>
 <%= form_with scope: :vehicle, url: vehicles_path(@vehicle),class: "form-inline " do |form|%>
 
   <div>
@@ -20,26 +22,26 @@
       <%= form.label :vehicle_type,"Car",class: "form-check-label m-3" %>
       <%= form.radio_button :vehicle_type, 'car', :checked => true,class: "form-check-input radio-inline"  %>
     </div>
-  
-  
-  <div class="actions ">
+   <div class="actions ">
     <%= form.submit "ADD", class: "btn btn-primary m-4"%>
-  </div>
-<% end %>
+   </div>
 
+    
+<% end %>
+<div>
 <table class="table  table-striped  ">
   <thead class="table-dark">
     <tr>
-      <th>S.no</th>
-      <th>Name/Number</th>
-      <th>Vehicle NO.</th>
-      <th>Type</th>
-      <th>Time in</th>
-      <th>Time out</th>
-      <th>Total hours</th>
-      <th>Charges</th>
-      <th>Status</th>
-      <th>Actions</th>
+    
+      <th><%= sort_link(@q, :name_or_mobile, "NAME/MOBILE" ,class: "text_white")%></th>
+      <th><%= sort_link(@q, :number, "VEHICLE NO" )%></th>
+      <th>TYPE</th>
+      <th>TIME IN</th>
+      <th>TIME OUT</th>
+      <th>TOTAL MINS</th>
+      <th><%= sort_link(@q, :fees, "CHARGES" )%></th>
+      <th>STATUS</th>
+      <th>ACTIONS</th>
     </tr>
   </thead>
 
@@ -47,7 +49,7 @@
   
        <% @vehicles.each.with_index(1) do |vehicle, index| %>
       <tr>
-        <td><%= index %></td>
+        
         <td><%= vehicle.name_or_mobile %></td>
         <td><%= vehicle.number%></td>
         <td><%= vehicle.charge.vehicle_type %></td>
@@ -61,7 +63,7 @@
         <td><%= vehicle.fees%></td>
         <td><%= vehicle.status %></td>
         <% if vehicle.status == Vehicle::STATUS[:parked] %>
-           <td><%= link_to 'Release',{controller: 'vehicles',action:'release_action',id: vehicle.id}, method: :get,class: 'btn btn-primary'%></td>
+           <td ><%= link_to 'Release',{controller: 'vehicles',action:'release_action',id: vehicle.id}, method: :get,class: 'btn btn-primary'%></td>
         <% else %>
           <td></td>
         <% end %>
@@ -69,4 +71,5 @@
     <% end %>
   </tbody>
 </table>
-
+ <div class:".text-center"><%= will_paginate @vehicles , renderer: WillPaginate::ActionView::BootstrapLinkRenderer ,list_classes: %w(pagination justify-content-center)%></div>
+</div>

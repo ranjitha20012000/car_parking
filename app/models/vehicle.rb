@@ -6,7 +6,7 @@ class Vehicle < ApplicationRecord
 
     def calculate_fees
         charge_fees = self.charge
-        total_hours = (self.total_time / 60.0).round
+        total_hours = (self.total_time / 60.0).ceil
         if total_hours <= charge_fees.min_hours
             charge_fees.min_charge
           else

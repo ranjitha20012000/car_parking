@@ -1,0 +1,60 @@
+<h1>CHARGES</h1>
+<%= form_with scope: :charge, url: charges_path(@charge),class: "form-inline " do |form|%>   
+
+  <div>
+    <%= form.text_field :vehicle_type, placeholder: 'Vehicle Type',  class: "border border-dark form-control m-2" %>
+  </div>
+  <div>
+    <%= form.text_field :min_hours, placeholder: 'Min Hours',  class: "border border-dark form-control m-2" %>
+  </div>
+  <div>
+    <%= form.text_field :min_charge, placeholder: 'Min Charge',  class: "border border-dark form-control m-2" %>
+  </div>
+  <div>
+    <%= form.text_field :extra_hour_charges, placeholder: 'Extra Hour Charges',  class: "border border-dark form-control m-2" %>
+  </div>
+  <div class="actions ">
+  <%= form.submit "ADD", class: "btn btn-primary m-4"%>
+  </div>
+ 
+<table class="table  table-striped  ">
+  <thead class="table-dark">
+    <tr>
+      <th>Vehicle type</th>
+      <th>Min Hour</th>
+      <th>Min Charge</th>
+      <th>Extra Hour Charges</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+        <br></br> <br></br>
+       <% @charges.each do |charge| %>
+      <tr>
+      
+        <td>
+        <% if charge.vehicle_type == "Car"%> 
+        <div class="icon car">
+        <span><i class="fa fa-car" style="font-size:30px;color:blue;font-weight: bold;" title ="Car"></i></span>
+        </div>
+        <%else%>
+        <div class="icon bike">
+        <span><i class="fa fa-motorcycle" style="font-size:30px;color:green;font-weight: bold;" title ="Bike"></i></span>
+        </div>
+        <%end%>
+        </td>
+        <td><%= charge.min_hours%></td>
+        <td><%= charge.min_charge %></td>
+        <td><%= charge.extra_hour_charges %></td>  
+        <td><%= link_to 'Edit',{controller: 'charges',action:'edit',id: charge.id}, method: :get,class: 'btn btn-primary'%></td>      
+      </tr>
+      <% end %>
+      <% end %>
+        
+        
+  </tbody>
+</table>
+
+
+

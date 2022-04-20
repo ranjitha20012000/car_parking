@@ -10,6 +10,11 @@ gem "rails", "~> 7.0.2", ">= 7.0.2.3"
 gem "sprockets-rails"
 gem "pg"
 gem 'pry-byebug'
+gem "font-awesome-rails"
+gem 'gritter', '~> 1.2'
+gem 'sass-rails'
+gem 'jquery-rails'
+
 # Use sqlite3 as the database for Active Record
 # gem "sqlite3", "~> 1.4"
 

@@ -1,52 +1,44 @@
 class ChargesController < ApplicationController
-  #before_action :set_charge, only: %i[ create edit update ]
-
     def index
-        @charges = Charge.all
-    end
-
-    def new
+        @charges = Charge.all.order(id: :desc)
     end
     def edit
+      @charge = Charge.find(params[:id])
     end
-    def show
+    def new
+      @charge = Charge.new
     end
-    
     def create
-        @charge = Charge.new(charge_params)
-       respond_to do |format|
-      if @charge.save
-        format.html { redirect_to charge_url(@charge)}
-       # format.json { render :show, status: :created, location: @charge }
-       else
-        format.html { render :edit, status: :unprocessable_entity }
-       # format.json { render json: @charge.errors, status: :unprocessable_entity }
-      end
-    end
-    end
-
-    def update
-      respond_to do |format|
-        if @charge.update(charge_params)
-          format.html { redirect_to charge_url(@charge), notice: "charge was successfully updated." }
-        else
-          format.html { render :show, status: :unprocessable_entity }
-        end  
-      end
-        
-    end    
-end
-private
-    
-    def set_charge
-     @charge = Charge.find(params[:id])
-    end
-
-    
-    def charge_params
       
-      params.require(:charge).permit(:vehicle_type, :min_hours, :min_charge, :extra_hour_charges)
-      binding.pry
+      @charge = Charge.new(params.require(:charge).permit(:vehicle_type, :min_hours, :min_charge, :extra_hour_charges))  
+       if @charge.save
+         flash[:notice] = "Charge was successfully created!!"
+         redirect_to charges_path(@charge)
+        else
+          flash[:notice] = @charge.errors.full_messages &.join(', ')
+          render :new 
+        end
+      end
+    def update
+      @charge = Charge.find(params[:id])
+      #respond_to do |format|
+      if @charge.update(charge_params)
+        #format.html { redirect_to @charge, notice: 'Successfully updated.' }
+        #format.json { render :index, status: :ok, location: @charge }
+        flash[:notice] = "Charge was successfully updated!"
+        redirect_to charges_path(@charge)
+        #redirect_to charges_url(@charges)
+      else
+        #format.html { render :edit }
+        #format.json { render json: @charge.errors, status: :unprocessable_entity }
+        flash.now[:error] = "Charge update failed"
+        render :edit
+       end     
+    end   
+end
+
+private
+    def charge_params 
+      #params.require(:charge).permit(:vehicle_type, :min_hours, :min_charge, :extra_hour_charges)
+      params.require(:charge).permit(:min_hours, :min_charge, :extra_hour_charges)
     end
-
-

@@ -4,4 +4,7 @@ import "controllers"
 
 import "script"
 import "login"
+//= require gritter
+//= require jquery
+//= require jquery_ujs
 
